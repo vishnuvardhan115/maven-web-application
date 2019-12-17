@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://13.233.43.101:8081/repository/myfreestyleproject-release/</url>
+	      <url>http://13.233.43.101:8081/repository/myrepo-rel/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://13.233.43.101:8081/repository/myfreestyleproject-snap/</url>
+	      <url>http://13.233.43.101:8081/repository/myrepo-snap/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
