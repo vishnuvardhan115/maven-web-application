@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://13.233.127.22:8081/#admin/repository/repositories:uday-release</url>
+	      <url>http://13.233.127.22:8081/repository/uday-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://13.233.127.22:8081/#admin/repository/repositories:uday-snapshot</url>
+	      <url>http://13.233.127.22:8081/repository/uday-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
