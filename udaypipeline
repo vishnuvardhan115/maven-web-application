@@ -1,0 +1,48 @@
+node('master')
+{
+    
+  echo "GitHub BranhName ${env.BRANCH_NAME}"
+  echo "Jenkins Job Number ${env.BUILD_NUMBER}"
+  echo "Jenkins Node Name ${env.NODE_NAME}"
+  echo "Jenkins Home ${env.JENKINS_HOME}"
+  echo "Jenkins URL ${env.JENKINS_URL}"
+  echo "JOB Name ${env.JOB_NAME}"
+  
+  
+    stage('checkout')
+    {
+     git credentialsId: 'b6c5bffd-7348-445c-b865-1a614634e7b6', url: 'https://github.com/IBM108/maven-web-application.git'    
+    }
+    
+    stage('Build') {
+     sh "mvn clean package"
+    }
+    
+    stage('SonarQube Report') {
+     sh "mvn clean sonar:sonar"
+    }
+    
+     stage('Upload Artifact into Nexus') {
+     sh "mvn deploy"
+    }
+     
+     stage('DeployAppIntoTomcat'){
+      sshagent(['17a770e8-3af7-4956-90a0-d0817d0c9304']) {
+     sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@54.179.179.90:/opt/apache-tomcat-9.0.31/webapps/maven-web-application.war"
+     
+}
+     }
+     
+     stage('EmailNotification'){
+      emailext body: '''build is over ra 
+
+
+Regards 
+
+Gandu nakoduku 
+bangalore 
+''', subject: 'Build is over', to: 'uknaidu57@gmail.com'
+     }
+    
+
+}
